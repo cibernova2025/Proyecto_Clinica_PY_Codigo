@@ -1,0 +1,80 @@
+/* CSS Original:
+header {
+    background-color: black;
+    padding: 20px;
+}
+nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    padding: 10px 20px;
+}
+nav a:hover {
+    background-color: gray;
+    color: black;
+    border-radius: 20px;
+}
+*/
+
+/*CSS Mejorado para Proyecto de Título*/
+:root {
+    --color-primary: #007bff;
+    /* Azul */
+    --color-secondary: #28a745;
+    /* Verde */
+    --color-dark: #343a40;
+}
+
+header {
+    background-color: white;
+    /* Cambiamos a fondo blanco/claro */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    /* Añade profundidad */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.full-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    /* Límite de ancho */
+    margin: 0 auto;
+    padding: 10px 20px;
+}
+
+/* Marca/Logo */
+.brand-logo-final {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    /* Color principal azul */
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+/* Lista de Enlaces */
+.nav-links-final {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.nav-links-final a {
+    text-decoration: none;
+    color: var(--color-dark);
+    /* Texto oscuro */
+    font-weight: 500;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+.nav-links-final a:hover {
+    color: var(--color-primary);
+    /* Resaltado azul */
+}

@@ -1,0 +1,85 @@
+<section class="patient-entry-section">
+    <h1> Ingreso de Datos del Paciente para Detección</h1>
+    <p class="subtitle">
+        Completa el formulario para ingresar los factores de riesgo y obtener la predicción de nuestro modelo de Machine
+        Learning.
+    </p>
+
+    <form class="patient-form">
+
+        <div class="form-group-section">
+            <h2>1. Información Básica del Paciente</h2>
+
+            <div class="form-control-row">
+
+                <div class="form-control">
+                    <label for="nombre">Nombre Completo (*)</label>
+                    <input id="nombre" type="text" placeholder="Ej: Juan Pérez" required>
+                    <div class="error-message show-error">Campo requerido.</div>
+                </div>
+
+                <div class="form-control">
+                    <label for="rut">RUT (*)</label>
+                    <input id="rut" type="text" placeholder="Ej: 12345678-K" required>
+                </div>
+
+                <div class="form-control">
+                    <label for="edad">Edad (*)</label>
+                    <input id="edad" type="number" min="18" max="100" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group-section">
+            <h2>2. Factores de Riesgo para el Análisis (ML)</h2>
+
+            <div class="form-control-row">
+
+                <div class="form-control">
+                    <label for="tipoCancer">Tipo de Cáncer a Evaluar (*)</label>
+                    <select id="tipoCancer" required>
+                        <option value="">-- Selecciona un tipo --</option>
+                        <option value="mama">Cáncer de Mama</option>
+                        <option value="colon">Cáncer de Colon</option>
+                        <option value="prostatra">Cáncer de Próstata</option>
+                        <option value="leucemia">Leucemia</option>
+                    </select>
+                </div>
+
+                <div class="form-control">
+                    <label for="historialFamiliar">Historial Familiar de Cáncer (*)</label>
+                    <select id="historialFamiliar" required>
+                        <option value="no">No</option>
+                        <option value="si">Sí</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-control-row">
+
+                <div class="form-control">
+                    <label for="indiceBiomarcador">Valor de Biomarcador (índice 0-10) (*)</label>
+                    <input id="indiceBiomarcador" type="number" step="0.1" min="0" placeholder="Ej: 4.5" required>
+                </div>
+
+                <div class="form-control">
+                    <label for="fumador">Estado Fumador (*)</label>
+                    <select id="fumador" required>
+                        <option value="No">No Fumador</option>
+                        <option value="Sí">Fumador Activo</option>
+                        <option value="Ex">Ex-Fumador</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-control full-width">
+                <label for="otrosDatos">Notas / Datos Adicionales</label>
+                <textarea id="otrosDatos" rows="3" placeholder="Información clínica relevante..."></textarea>
+            </div>
+        </div>
+
+        <button type="submit" disabled class="btn-submit">
+            Enviar Datos y Obtener Predicción
+        </button>
+    </form>
+</section>

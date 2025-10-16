@@ -1,0 +1,149 @@
+/* src/app/pages/home/home.component.css */
+
+/* --- CONFIGURACIÓN BASE --- */
+:host {
+    --color-primary: #007bff;
+    /* Azul profesional */
+    --color-secondary: #28a745;
+    /* Verde para acciones */
+    --color-light: #f8f9fa;
+    --color-dark: #343a40;
+}
+
+section {
+    padding: 60px 5%;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    text-align: center;
+    color: var(--color-dark);
+}
+
+/* --- 1. SECCIÓN HERO --- */
+.hero {
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    padding: 100px 5%;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 5px;
+}
+
+.hero h2 {
+    font-size: 1.6rem;
+    font-weight: 300;
+    margin-bottom: 30px;
+    color: var(--color-light);
+    /* Sobrescribir el h2 global */
+}
+
+/* Botón Principal (Primary) */
+.btn-primary {
+    display: inline-block;
+    background-color: var(--color-secondary);
+    color: white;
+    padding: 14px 40px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    /* Quitar subrayado del enlace */
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+/* --- 2. SECCIÓN DE VALOR (Tarjetas) --- */
+.value-propositions {
+    background-color: var(--color-light);
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.card {
+    flex: 1;
+    background: white;
+    padding: 25px;
+    border-top: 5px solid var(--color-primary);
+    /* Toque de estilo */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.card h3 {
+    color: var(--color-primary);
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+}
+
+/* --- 3. SECCIÓN MISIÓN --- */
+.about-mission {
+    background-color: white;
+    text-align: left;
+}
+
+.mission-text {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-mission h2 {
+    margin-top: 0;
+}
+
+.about-mission ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.about-mission li {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="%23007bff" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>') no-repeat left center;
+    background-size: 16px;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.btn-secondary {
+    display: inline-block;
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+/* --- 4. SECCIÓN CONTACTO --- */
+.contact-footer {
+    background-color: #eee;
+    text-align: center;
+    border-top: 1px solid #ddd;
+}
+
+.contact-info p {
+    margin: 5px 0;
+    font-size: 1.1rem;
+}
