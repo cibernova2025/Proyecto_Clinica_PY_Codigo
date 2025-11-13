@@ -1,80 +1,100 @@
-/* CSS Original:
-header {
-    background-color: black;
-    padding: 20px;
-}
-nav a {
-    color: white;
-    margin: 0 10px;
-    text-decoration: none;
-    padding: 10px 20px;
-}
-nav a:hover {
-    background-color: gray;
-    color: black;
-    border-radius: 20px;
-}
-*/
+/* === HEADER ESTILO CLÍNICO MODERNO === */
 
-/*CSS Mejorado para Proyecto de Título*/
-:root {
-    --color-primary: #007bff;
-    /* Azul */
-    --color-secondary: #28a745;
-    /* Verde */
-    --color-dark: #343a40;
+.navbar {
+    background: linear-gradient(90deg, #eaf4ff 0%, #f8fbff 100%);
+    box-shadow: 0 4px 10px rgba(13, 110, 253, 0.15);
+    border-bottom: 3px solid #0d6efd;
+    transition: all 0.3s ease-in-out;
+    font-family: "Poppins", sans-serif;
+    padding: 0.7rem 1rem;
 }
 
-header {
-    background-color: white;
-    /* Cambiamos a fondo blanco/claro */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-    /* Añade profundidad */
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.full-navbar {
+.navbar-brand {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    /* Límite de ancho */
-    margin: 0 auto;
-    padding: 10px 20px;
-}
-
-/* Marca/Logo */
-.brand-logo-final {
-    font-size: 1.6rem;
     font-weight: 700;
-    color: var(--color-primary);
-    /* Color principal azul */
-    text-decoration: none;
-    letter-spacing: -0.5px;
+    color: #0d6efd !important;
+    font-size: 1.3rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
 }
 
-/* Lista de Enlaces */
-.nav-links-final {
-    list-style: none;
-    display: flex;
-    gap: 25px;
-    margin: 0;
-    padding: 0;
-    align-items: center;
+.navbar-brand .logo {
+    height: 40px;
+    width: auto;
+    margin-right: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 6px rgba(13, 110, 253, 0.3);
 }
 
-.nav-links-final a {
-    text-decoration: none;
-    color: var(--color-dark);
-    /* Texto oscuro */
+.nav-link {
+    position: relative;
     font-weight: 500;
-    padding: 5px 0;
-    transition: color 0.3s ease;
+    color: #2c3e50 !important;
+    margin: 0 12px;
+    font-size: 1rem;
+    transition: color 0.3s ease, transform 0.2s ease;
 }
 
-.nav-links-final a:hover {
-    color: var(--color-primary);
-    /* Resaltado azul */
+.nav-link:hover {
+    color: #0d6efd !important;
+    transform: translateY(-2px);
+}
+
+/* Línea azul elegante al pasar el mouse */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0%;
+    height: 2px;
+    background: #0d6efd;
+    transition: all 0.3s ease-in-out;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* Botón destacado en la barra */
+.btn-primary {
+    background: #0d6efd;
+    border: none;
+    border-radius: 20px;
+    color: #fff;
+    padding: 6px 18px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    background: #084ac1;
+    box-shadow: 0 4px 18px rgba(8, 74, 193, 0.5);
+    transform: translateY(-1px);
+}
+
+/* Responsive (celulares) */
+@media (max-width: 991px) {
+    .navbar-nav {
+        background: #f9fbff;
+        border-radius: 12px;
+        margin-top: 10px;
+        padding: 10px 0;
+    }
+
+    .nav-link {
+        display: block;
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .btn-primary {
+        display: block;
+        width: 80%;
+        margin: 10px auto;
+    }
 }

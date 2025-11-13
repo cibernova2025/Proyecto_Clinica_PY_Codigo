@@ -1,48 +1,43 @@
-<section class="hero">
-    <div class="hero-content">
+<section class="hero text-center">
+    <div class="container position-relative">
         <h1>APT Diagnóstico Inteligente</h1>
-        <h2>La Precisión del Machine Learning al Servicio de la Detección Temprana de Cáncer.</h2>
-        <p>Utilizamos análisis de datos avanzados para predecir el riesgo y guiar la prevención.</p>
+        <p class="lead">
+            La precisión del Machine Learning al servicio de la detección temprana de cáncer.
+        </p>
 
-        <a routerLink="/registro-paciente" class="btn-primary">
-            Comenzar Detección Ahora
-        </a>
-    </div>
-</section>
+        <!-- Input invisible -->
+        <input type="file" #fileInput (change)="onFileSelectedAndUpload($event)" accept="image/png, image/jpeg"
+            hidden />
 
-<section class="value-propositions">
-    <h2>¿Por Qué Elegir Nuestro Sistema?</h2>
-    <div class="card-container">
-        <div class="card">
-            <h3>Detección Precoz</h3>
-            <p>Identificación de riesgos mucho antes de la manifestación clínica, mejorando las tasas de éxito de la
-                intervención.</p>
-        </div>
-        <div class="card">
-            <h3>Análisis Confiable</h3>
-            <p>Modelos robustos entrenados con grandes volúmenes de datos, cumpliendo con los estándares de
-                rendimiento predictivo.</p>
-        </div>
-        <div class="card">
-            <h3>Visualización Clara</h3>
-            <p>Resultados del riesgo y métricas técnicas claros, visualizados con herramientas como Power BI.</p>
+        <!-- Botón de acción -->
+        <button (click)="fileInput.click()" class="btn btn-primary btn-lg px-4 py-2 mt-3" [disabled]="isLoading">
+            <i *ngIf="!isLoading" class="bi bi-upload me-2"></i>
+            <i *ngIf="isLoading" class="bi bi-hourglass-split me-2"></i>
+            {{ isLoading ? 'Analizando Imagen...' : 'Comenzar Detección Ahora' }}
+        </button>
+
+        <!-- Mensaje dinámico -->
+        <div *ngIf="uploadMessage" class="alert mt-4" [class.alert-success]="!isError" [class.alert-danger]="isError">
+            {{ uploadMessage }}
         </div>
     </div>
 </section>
 
-<section class="about-mission">
-    <h2>Nuestra Misión y Proyecto</h2>
-    <div class="mission-text">
-        <p>Somos un equipo enfocado en la Innovación en Salud, desarrollando soluciones informáticas que aplican las
-            competencias de análisis y desarrollo de software.</p>
-
-        <h3>Objetivos Clave:</h3>
-        <ul>
-            <li>Construir un sistema de software que utilice algoritmos de Machine Learning para la predicción
-                de riesgo.</li>
-            <li>Proporcionar evidencia a través de modelos de datos, garantizando la usabilidad y confiabilidad
-                del sistema.</li>
-        </ul>
-        <a routerLink="/acerca-de" class="btn-secondary">Conoce Más del Proyecto</a>
+<!-- Sección de accesos rápidos -->
+<section class="value-propositions container py-5">
+    <h3 class="text-center fw-semibold text-primary mb-5">Funciones Principales</h3>
+    <div class="row g-4 justify-content-center">
+        <div class="col-md-4 col-sm-6" *ngFor="let item of featureCards">
+            <div class="card border-0 shadow-sm h-100 hover-card">
+                <div class="card-body text-center">
+                    <i [class]="'bi ' + item.icon + ' text-primary fs-1 mb-3'"></i>
+                    <h5 class="fw-semibold mb-2">{{ item.title }}</h5>
+                    <p class="text-muted small mb-3">{{ item.text }}</p>
+                    <a [routerLink]="item.link" class="btn btn-outline-primary rounded-pill px-3">
+                        <i class="bi bi-arrow-right"></i> Ir
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </section>

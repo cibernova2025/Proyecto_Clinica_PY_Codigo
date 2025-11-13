@@ -1,41 +1,19 @@
-/* src/app/components/footer/footer.component.css */
-
-.simple-footer {
-    background-color: #343a40;
-    /* Gris oscuro */
-    color: #adb5bd;
-    /* Texto gris claro */
-    padding: 20px 0 0 0;
+.footer {
+    background: linear-gradient(180deg, #f9fbff 0%, #eef3fb 100%);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    color: #6c757d;
     font-size: 0.9rem;
-    margin-top: 40px;
+    transition: all 0.3s ease;
 }
 
-.footer-content-simple {
-    text-align: center;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 20px 15px 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+.footer-link {
+    color: #0d6efd;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
-.footer-info-section p {
-    margin: 5px 0;
-}
-
-.footer-info-section strong {
-    color: white;
-    font-size: 1rem;
-}
-
-/* Barra de Copyright */
-.footer-bottom-simple {
-    text-align: center;
-    padding: 10px 0;
-    background-color: #212529;
-}
-
-.footer-bottom-simple p {
-    margin: 0;
-    color: #999;
-    font-size: 0.8rem;
+.footer-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
 }
