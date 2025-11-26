@@ -24,8 +24,8 @@ export class Home {
   featureCards = [
     {
       icon: 'person-badge',
-      title: 'Registrar Paciente',
-      text: 'Carga los datos de un nuevo caso para su análisis clínico.',
+      title: 'Historial Clínico',
+      text: 'Visualiza los análisis anteriores y su evolución en el tiempo.',
       link: '/history'
     },
     {
@@ -34,12 +34,7 @@ export class Home {
       text: 'Consulta los análisis previos y reportes generados.',
       link: '/results'
     },
-    {
-      icon: 'bar-chart-line',
-      title: 'Dashboard',
-      text: 'Visualiza estadísticas e indicadores de predicción.',
-      link: '/dashboard'
-    }
+
   ];
 
   constructor(
