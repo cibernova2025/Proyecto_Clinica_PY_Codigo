@@ -1,18 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
+interface HistoryItem {
+  id?: string;
+  date: string;
+  result: string;
+  confidence: string;
+}
 
 @Component({
   selector: 'app-history',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HttpClientModule],
   templateUrl: './history.html',
-  styleUrl: './history.css'
+  styleUrls: ['./history.css']
 })
-export class History {
-  // Simulación de historial de análisis
-  analyses = [
-    { date: '2025-11-12', result: 'Sin anomalías detectadas', confidence: '98%' },
-    { date: '2025-11-10', result: 'Posible lesión benigna', confidence: '85%' },
-    { date: '2025-11-08', result: 'Imagen poco clara — repetir análisis', confidence: '60%' }
-  ];
+export class History implements OnInit {
+  analyses: HistoryItem[] = [];
+  private apiBase = 'http://localhost:3000';
+
+  constructor(private http: HttpClient) {}
+
+  ngOnInit(): void {
+    this.http.get<HistoryItem[]>(`${this.apiBase}/api/history`)
+      .subscribe({
+        next: (data) => {
+          this.analyses = data;
+        },
+        error: (err) => {
+          console.error('Error cargando historial:', err);
+        }
+      });
+  }
 }

@@ -18,5 +18,5 @@ export class Results {
   };
 
   // 🔹 Power BI embebido
-  powerBIUrl = 'https://app.powerbi.com/view?r=TU-ENLACE-AQUI';
+  powerBIUrl = 'https://app.powerbi.com/view?r=eyJrIjoiYWUxNDU0N2YtZGZlNC00OGRkLTlmNWEtOTExN2JhOGRiMjliIiwidCI6IjhkMGNjZmQzLWZhZDctNDhiNy04MzQ3LWE4NWExMzg2MzBmOSIsImMiOjh9';
 }

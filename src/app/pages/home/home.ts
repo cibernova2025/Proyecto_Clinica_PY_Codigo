@@ -1,19 +1,25 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, HttpClientModule],
   templateUrl: './home.html',
-  styleUrl: './home.css'
+  styleUrls: ['./home.css']
 })
 export class Home {
   isLoading = false;
   uploadMessage = '';
   isError = false;
+  imagePreviewUrl: string | null = null;
+
+  private apiBase = 'http://localhost:3000';
+  private predictUrl = `${this.apiBase}/api/predict`;
+  private historyUrl = `${this.apiBase}/api/history`;
 
   featureCards = [
     {
@@ -36,7 +42,9 @@ export class Home {
     }
   ];
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
   onFileSelectedAndUpload(event: Event) {
     const input = event.target as HTMLInputElement;
@@ -48,33 +56,85 @@ export class Home {
     }
 
     const file = input.files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreviewUrl = reader.result as string;
+    };
+    reader.readAsDataURL(file);
     const formData = new FormData();
     formData.append('image', file);
 
     this.isLoading = true;
     this.uploadMessage = '';
+    this.isError = false;
 
-    // 🔹 Simulación de análisis
-    setTimeout(() => {
-      this.isLoading = false;
-      this.uploadMessage = 'Análisis completado: No se detectaron anomalías.';
-      this.isError = false;
-    }, 2000);
+    this.http.post<any>(this.predictUrl, formData).subscribe({
+      next: (res) => {
+        let prediction: any = null;
 
-    // 🔹 Si tuvieras un backend real:
-    /*
-    this.http.post('https://tu-api-ml.com/predict', formData).subscribe({
-      next: (res: any) => {
+        if (res.result?.displayNames && res.result?.confidences) {
+          prediction = res.result;
+        } else if (res.predictions?.[0]?.displayNames && res.predictions?.[0]?.confidences) {
+          prediction = res.predictions[0];
+        }
+
+        if (prediction) {
+          const labels: string[] = prediction.displayNames;
+          const confidences: number[] = prediction.confidences;
+
+          // Tomamos SOLO la mejor predicción (índice 0)
+          const label = labels[0];
+          const confidence = confidences[0];
+
+          const labelTraducida = this.translateLabel(label);
+          const porcentaje = (confidence * 100).toFixed(1);
+
+          this.uploadMessage = `Diagnóstico sugerido: ${labelTraducida} (${porcentaje}% de confianza).`;
+          this.isError = false;
+
+          this.http.post(this.historyUrl, {
+            date: new Date().toISOString().slice(0, 10),
+            result: labelTraducida,
+            confidence: `${porcentaje}%`
+          }).subscribe({
+            next: () => {
+              console.log('Historial guardado en backend');
+            },
+            error: (err) => {
+              console.error('Error guardando historial:', err);
+            }
+          });
+        } else {
+          this.uploadMessage = 'No se pudo interpretar la respuesta del modelo.';
+          this.isError = true;
+        }
+
         this.isLoading = false;
-        this.uploadMessage = `Resultado del análisis: ${res.result}`;
-        this.isError = false;
       },
       error: (err) => {
-        this.isLoading = false;
-        this.uploadMessage = 'Error al procesar la imagen.';
+        console.error(err);
+        this.uploadMessage = 'Error al procesar la imagen en el servidor.';
+        if (err.error?.error) {
+          this.uploadMessage += ` Detalle: ${err.error.error}`;
+        } else if (err.error?.details) {
+          this.uploadMessage += ` Detalle: ${err.error.details}`;
+        }
         this.isError = true;
+        this.isLoading = false;
       }
     });
-    */
+  }
+  private translateLabel(label: string): string {
+    const map: Record<string, string> = {
+      nv: 'Nevus melanocítico (lunar benigno)',
+      mel: 'Melanoma (lesión maligna sospechosa)',
+      bkl: 'Lesión queratinocítica benigna',
+      akiec: 'Carcinoma intraepidérmico',
+      bcc: 'Carcinoma basocelular',
+      df: 'Dermatofibroma',
+      vasc: 'Lesión vascular'
+    };
+
+    return map[label] || label;
   }
 }
