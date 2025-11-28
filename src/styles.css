@@ -1,15 +1,12 @@
 /* ============================================================
-   ESTILOS GLOBALES - CLÍNICA PY
+   RESET Y BASE
    ============================================================ */
-
-/* Reset general */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-/* Estructura base */
 html,
 body {
     height: 100%;
@@ -17,31 +14,29 @@ body {
     background-color: #f8fafc;
     color: #1e293b;
     scroll-behavior: smooth;
+
+    display: flex;
+    flex-direction: column;
 }
 
-/* Layout flexible para mantener el footer en el fondo */
-body {
+/* App Angular base */
+app-root {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    padding-top: 72px;
-    /* 👈 compensa el navbar fixed-top */
 }
 
-/* Contenedor principal de cada vista */
+/* Contenedor principal donde van las vistas */
+main,
+.page-container,
 .main-content {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    /* centra verticalmente */
-    align-items: center;
-    /* centra horizontalmente */
-    padding: 3rem 1rem;
+    padding-top: 90px;
+    /* Solo 1 compensación del navbar */
 }
 
 /* ============================================================
-   TIPOGRAFÍA Y TEXTOS
+   TIPOGRAFÍA
    ============================================================ */
 h1,
 h2,
@@ -81,7 +76,7 @@ p {
 }
 
 /* ============================================================
-   TARJETAS Y CONTENEDORES
+   TARJETAS
    ============================================================ */
 .card {
     border: none;
@@ -97,59 +92,16 @@ p {
 }
 
 /* ============================================================
-   NAVBAR Y FOOTER
+   NAVBAR
    ============================================================ */
 .navbar {
     background: #ffffff;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-footer {
-    background-color: #ffffff;
-    border-top: 1px solid #e2e8f0;
-    color: #64748b;
-    font-size: 0.875rem;
-    padding: 1rem 0;
-    text-align: center;
-}
-
-footer a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
-
-main,
-.page-container {
-    padding-top: 90px;
-    /* Ajusta según la altura de tu header */
-}
-
-
-html,
-body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    background-color: #f8fafc;
-    /* tono suave clínico */
-}
-
-app-root {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-main {
-    flex: 1;
-    /* Empuja el footer al fondo */
-}
-
+/* ============================================================
+   STICKY FOOTER REAL
+   ============================================================ */
 footer {
     background-color: #e9eef5;
     color: #334155;
@@ -157,7 +109,17 @@ footer {
     padding: 1rem 0;
     font-size: 0.9rem;
     border-top: 1px solid #d2dce7;
-    position: relative;
-    bottom: 0;
     width: 100%;
+    margin-top: auto;
+    /* 👈 hace que siempre quede abajo */
+}
+
+footer a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+footer a:hover {
+    text-decoration: underline;
 }

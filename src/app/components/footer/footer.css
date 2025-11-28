@@ -1,19 +1,47 @@
-.footer {
-    background: linear-gradient(180deg, #f9fbff 0%, #eef3fb 100%);
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
-    color: #6c757d;
-    font-size: 0.9rem;
+/* ===== FOOTER MODERNO CON GRADIENTE ===== */
+
+.footer-modern {
+    background: linear-gradient(90deg, #002a63, #0d6efd);
+    color: #ffffff;
+    border-top: 3px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.25);
+    position: relative;
+}
+
+/* Línea brillante superior */
+.footer-modern::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, #7cc7ff, #ffffff, #7cc7ff);
+    opacity: 0.7;
+}
+
+/* Estilo enlaces */
+.footer-link {
+    color: #dbe9ff;
+    font-weight: 500;
+    text-decoration: none;
     transition: all 0.3s ease;
 }
 
-.footer-link {
-    color: #0d6efd;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
+.footer-link:hover {
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
 }
 
-.footer-link:hover {
-    color: #0056b3;
-    text-decoration: underline;
+/* Responsive */
+@media (max-width: 768px) {
+    .footer-modern {
+        text-align: center;
+        padding: 1.5rem 1rem;
+    }
+
+    .footer-link {
+        display: inline-block;
+        margin: 0.2rem 0;
+    }
 }

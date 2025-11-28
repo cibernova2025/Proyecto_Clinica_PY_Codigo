@@ -1,100 +1,69 @@
-/* === HEADER ESTILO CLÍNICO MODERNO === */
+/* === HEADER MODERNO MÉDICO CON GRADIENTE (OPTIMIZADO) === */
 
-.navbar {
-    background: linear-gradient(90deg, #eaf4ff 0%, #f8fbff 100%);
-    box-shadow: 0 4px 10px rgba(13, 110, 253, 0.15);
-    border-bottom: 3px solid #0d6efd;
-    transition: all 0.3s ease-in-out;
-    font-family: "Poppins", sans-serif;
-    padding: 0.7rem 1rem;
-}
-
-.navbar-brand {
-    display: flex;
-    align-items: center;
-    font-weight: 700;
-    color: #0d6efd !important;
-    font-size: 1.3rem;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
+.navbar-custom {
+    background: linear-gradient(90deg, #002a63, #0d6efd);
+    padding: 0.7rem 1.2rem;
+    box-shadow: 0 4px 12px rgba(0, 58, 140, 0.25);
+    border-bottom: 3px solid #9bd6ff;
+    transition: all 0.3s ease;
 }
 
 .navbar-brand .logo {
     height: 40px;
-    width: auto;
-    margin-right: 10px;
-    border-radius: 10px;
-    box-shadow: 0 0 6px rgba(13, 110, 253, 0.3);
+    border-radius: 8px;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
 }
 
+.brand-text {
+    font-size: 1.28rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+/* Links */
 .nav-link {
-    position: relative;
+    color: #eaf3ff !important;
     font-weight: 500;
-    color: #2c3e50 !important;
     margin: 0 12px;
-    font-size: 1rem;
-    transition: color 0.3s ease, transform 0.2s ease;
+    position: relative;
+    transition: 0.3s ease;
 }
 
 .nav-link:hover {
-    color: #0d6efd !important;
-    transform: translateY(-2px);
+    color: #ffffff !important;
 }
 
-/* Línea azul elegante al pasar el mouse */
+/* Línea animada */
 .nav-link::after {
-    content: '';
+    content: "";
     position: absolute;
-    bottom: 0;
+    bottom: -4px;
     left: 50%;
     width: 0%;
-    height: 2px;
-    background: #0d6efd;
-    transition: all 0.3s ease-in-out;
+    height: 3px;
+    background: #9bd6ff;
     transform: translateX(-50%);
+    transition: 0.3s ease;
 }
 
-.nav-link:hover::after,
-.nav-link.active::after {
-    width: 100%;
+.nav-link:hover::after {
+    width: 80%;
 }
 
-/* Botón destacado en la barra */
-.btn-primary {
-    background: #0d6efd;
-    border: none;
-    border-radius: 20px;
-    color: #fff;
-    padding: 6px 18px;
-    font-weight: 600;
-    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
-    transition: all 0.3s ease-in-out;
-}
-
-.btn-primary:hover {
-    background: #084ac1;
-    box-shadow: 0 4px 18px rgba(8, 74, 193, 0.5);
-    transform: translateY(-1px);
-}
-
-/* Responsive (celulares) */
+/* Móvil */
 @media (max-width: 991px) {
-    .navbar-nav {
-        background: #f9fbff;
-        border-radius: 12px;
-        margin-top: 10px;
-        padding: 10px 0;
+    .navbar-custom {
+        padding: 1rem;
     }
 
     .nav-link {
-        display: block;
         text-align: center;
-        margin: 10px 0;
+        margin: 12px 0;
     }
 
-    .btn-primary {
-        display: block;
-        width: 80%;
-        margin: 10px auto;
+    .nav-link::after {
+        display: none;
     }
 }
